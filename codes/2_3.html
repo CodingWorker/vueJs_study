@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+</head>
+<body>
+<!-- html5中只能有一个id -->
+<!-- <div v-html="rawHtml" id="app">
+</div> -->
+<div id="app">
+<!-- v-bind接受参数的指令，参数为href表示将此标签的href属性设置为url -->
+	<a v-bind:href="url">百度知道</a>
+	<button v-on:click="clickOn">点击</button>
+</div>
+<div>
+
+</div>
+<script>
+// vue区分大小写，一定要大写才能生效
+var vm=new Vue({
+	// 限定父级，子级都可以访问到，其他领域访问不到
+	el:"#app",
+	data:{
+		url:"http://www.baidu.com"
+	},
+	// methods必须为复数，需要在methods声明事件的处理函数
+	methods:{
+		clickOn:function(){
+				alert("被点击");
+		}
+	}
+});
+</script>
+</body>
+</html>

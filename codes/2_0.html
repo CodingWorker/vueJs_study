@@ -6,18 +6,18 @@
 </head>
 <body>
 <div id="app">
-  {{ message }}
+  Message:{{message}}
 </div>
 <div>
-<!-- 此处的message不代表vue中的值 -->
-	{{message}}
+
 </div>
 <script>
-var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  }
+// vue区分大小写，一定要大写才能生效
+var vm=new Vue({
+	el:"#app",
+	data:{
+		message:"vue test"
+	}
 });
 </script>
 </body>

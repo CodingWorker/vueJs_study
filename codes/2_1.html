@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+</head>
+<body>
+<!-- html5中只能有一个id -->
+<!-- <div v-html="rawHtml" id="app">
+</div> -->
+<div id="app">{{number+2}}
+<span>{{number*2}}</span>
+</div>
+<div>
+
+</div>
+<script>
+// vue区分大小写，一定要大写才能生效
+var vm=new Vue({
+	// 限定父级，子级都可以访问到，其他领域访问不到
+	el:"#app",
+	data:{
+		message:"vue test",
+		rawHtml:"pure html",
+		number:12
+	}
+});
+</script>
+</body>
+</html>
