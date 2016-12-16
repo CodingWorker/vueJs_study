@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+</head>
+<body>
+<div id="app">
+  originMessage:{{ message }}<br />
+  <!-- reversedMessage:{{reversedMessage()}} -->
+  <!-- 也可以绑定 -->
+  <!-- <span v-text="reversedMessage()"></span> -->
+  <span v-html="reversedMessage()"></span>
+</div>
+
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+  },
+  methods:{
+    reversedMessage:function(){
+       return this.message.split('').reverse().join('');
+    }
+  }
+});
+</script>
+</body>
+</html>

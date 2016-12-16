@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+</head>
+<body>
+<div id="app">
+  firstName:{{firstName}}<br />
+  lastName:{{lastName}}<br />
+  fullName:{{fullName}}
+</div>
+
+<script>
+var vm = new Vue({
+  el: '#app',
+  data: {
+    firstName:'Foo',
+    lastName:'Bar',
+    fullName:'Foo Bar'
+  },
+  watch:{
+    //在console中改变就会响应,
+    //一个参数时参数代表改变后的值，两个参数时第一个参数为新值，第二个值为旧值
+    firstName:function(oldVal,val){
+      console.log(val);
+      this.fullName=val+' ' +this.lastName;
+    },
+    lastName:function(oldVal,val){
+      console.log(oldVal);
+      this.fullName=this.firstName+' '+val;
+    }
+  }
+});
+</script>
+</body>
+</html>

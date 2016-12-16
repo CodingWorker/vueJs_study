@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+<div id="app">
+<ul>
+<!-- 使用带索引 -->
+	<li v-for="(item,index) in items">{{index}} - {{item.message}}</li>
+</ul>
+</div>
+<script>
+var vm=new Vue({
+	el:"#app",
+	data:{
+		items:[
+			{message:'foo'},
+			{message:'bar'}
+		]
+	}
+})
+</script>
+</body>
+</html>

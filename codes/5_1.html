@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+	<style type="text/css">
+		.active{
+			font-size:3em;
+			color:red;
+		}
+
+    .bold{
+      font-weight: bold;
+    }
+	</style>
+</head>
+<body>
+<div id="app" v-bind:class="[active,bold]">
+  {{ message }}
+</div>
+
+<script>
+var vm = new Vue({
+  el: '#app',
+  data: {
+    message:'Foo Bar',
+  	active:'active',
+    bold:'bold'
+  }
+});
+</script>
+</body>
+</html>

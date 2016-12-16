@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+	<style type="text/css">
+		.active{
+			font-size:3em;
+			color:red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<div id="app" v-bind:class="{active:isActive}">
+  {{ message }}
+</div>
+<button v-bind:click="toggle()">点击更换</button>
+
+<script>
+var vm = new Vue({
+  el: '#app',
+  data: {
+  	message:'Foo Bar',
+    isActive: true,
+  },
+  methods:{
+  	toggle:function(){
+  		this.isActive=this.isActive;
+  	}
+  }
+});
+</script>
+</body>
+</html>

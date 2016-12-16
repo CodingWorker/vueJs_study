@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+	<style type="text/css">
+		.active{
+			font-size:3em;
+			color:red;
+		}
+
+    .error{
+      text-decoration: underline;
+    }
+	</style>
+</head>
+<body>
+<!-- 使用三元表达式,总是添加error的class，只有在isActive为true时才会添加active的class -->
+<div id="app" v-bind:class="[{active:isActive}, isError]">
+  {{ message }}
+</div>
+
+<script>
+var vm = new Vue({
+  el: '#app',
+  data: {
+    message:'Foo Bar',
+  	isActive:true,
+    active:'active',
+    isError:'error'
+  }
+});
+</script>
+</body>
+</html>

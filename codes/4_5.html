@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+</head>
+<body>
+<div id="app">
+  firstName:{{firstName}}<br />
+  lastName:{{lastName}}<br />
+  fullName:{{fullName}}
+</div>
+
+<script>
+var vm = new Vue({
+  el: '#app',
+  data: {
+    firstName:'Foo',
+    lastName:'Bar',
+  },
+  computed:{
+    // 使用计算属性，不使用watch也可以
+    fullName:function(){
+      return this.firstName+' '+this.lastName;
+    }
+  }
+});
+</script>
+</body>
+</html>

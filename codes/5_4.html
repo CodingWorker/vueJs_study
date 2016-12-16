@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+<!-- 绑定style时，用单引号引起来的直接值显示，没有用单引号括起来就是vue的data数据 -->
+<div  id="app" v-bind:style="{color:'red',fontSize:bold}">
+{{message}}
+</div>
+<script>
+var vm=new Vue({
+  el:'#app',
+  data:{
+    message:'Foo Bar',
+    bold:'12px'
+  }
+});
+</script>
+</body>
+</html>
