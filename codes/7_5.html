@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+</head>
+<body>
+<div id="app">
+  <ul><li v-for="(item,index) in thing">{{index}} - {{item}}</li></ul>
+  <p>{{message}}</p>
+</div>
+<script>
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'message',
+			thing:[
+				{a:'a'},
+				{b:'b'},
+				{c:'c'}
+			]
+		}
+	});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+</head>
+<body>
+<div id="app">
+<!-- 整数迭代 -->
+  <ul><li v-for="x in 10">{{x*x}}</li></ul>
+  <p>{{message}}</p>
+</div>
+<script>
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'message',
+			thing:{
+				a:'a',
+				b:'b',
+				c:'c'
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

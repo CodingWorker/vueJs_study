@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"> </script>
+</head>
+<body>
+<div id="app">
+  <p v-on:click="count+=1">增加1</p>
+  <h1>共点击了{{count}}次</h1>
+  
+</div>
+<script>
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			count:0
+		},
+		methods:{
+			show:function(){
+				this.isShowable=true;
+			},
+			hide:function(){
+				this.isShowable=false;
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

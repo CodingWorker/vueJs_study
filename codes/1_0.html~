@@ -6,11 +6,11 @@
 </head>
 <body>
 <div id="app">
-	<p>´Ë´¦»áÕıÈ·ÏÔÊ¾message</p>
+	<p>ä¸‹é¢æ˜¾ç¤ºmessageçš„ä¿¡æ¯</p>
   {{ message }}
 </div>
 <div>
-<!-- ´Ë´¦µÄmessage²»»áÕıÈ·ÏÔÊ¾ -->
+<!-- æ­¤å¤„çš„messageä¸ä»£è¡¨vueä¸­çš„å€¼ -->
 	{{message}}
 </div>
 <script>
