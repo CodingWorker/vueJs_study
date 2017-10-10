@@ -1,0 +1,105 @@
+<html>
+	<head>
+	<meta charset="utf-8">
+		<title>vue demo</title>
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/vue-2.4.4.js"> </script>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{message}}</p>
+			<p v-bind:title='title'>
+			Hover your mouse over me for a few seconds to see my dynamically bound title!
+			</p>
+			<p v-if="seen">now u see me</p>
+			<ul>
+				<li v-for="(v,k) in persons">{{k+1}}. {{v}}</li>
+			</ul>
+			<button v-on:click="reverseMessage">reverse message</button>
+			<form action="">
+				<input type="text" v-model="message">
+			</form>
+			<div v-once>v-once的使用，{{message}}仅仅绑定一次，不会自动更新</div>
+		
+			<div v-html>v-html的使用，{{message}}不会被解析</div>
+			<div v-bind:id="dynamic_id">使用v-bind动态改变html的id</div>
+			<button v-bind:disabled="isDisabled">control by isDisabled</button>
+			<div>{{message.split('').reverse().join('-')}}</div>
+			<div v-bind:class="classA +' fl'">绑定属性，使用js表达式</div>
+			<div>{{num+1}}</div>
+			<div>{{isOK?'Yes':'No'}}</div>
+			<div>过滤器使用，首字母大写{{message | capitalize | addSufix('@')}}</div>
+		</div>
+		<script>
+			// console.log(Vue);
+			// 不需要编译器
+			// var div=new Vue({
+			//   render (h) {
+			//     return h('div', this.hi)
+			//   }
+			// });
+			// $('body').appendChild(div);
+			// });
+
+			//开始是有个vue
+			var app=new Vue({
+				el:'#app',
+				data:{//可以使用app访问也可以使用app.$data访问
+					message:'hello world',
+					title:'you load page on'+new Date(),
+					seen:true,
+					dynamic_id:'a',
+					isDisabled:true,
+					classA:'a',
+					classB:'b',
+					num:1,
+					isOK:true,
+					persons:[
+						'Daniel',
+						'Jack',
+						'David',
+						'Mary'
+					]
+				},
+				beforeCreate:function(){
+					console.log('before created');
+				},
+				created:function(){
+					console.log('created app');
+				},
+				beforeUpdate:function(){
+					console.log('before update');
+				},
+				updated:function(){
+					console.log('some changed of app');
+				},
+				actived:function(){
+					console.log('actived');
+				},
+				deactived:function(){
+					console.log('deactived');
+				},
+				beforeMount:function(){
+					console.log('beofre mount');
+				},
+				mounted:function(){
+					console.log('mounted');
+				},
+				methods:{
+					reverseMessage:function(){
+						this.message=this.message.split('').reverse().join('');
+					}
+				},
+				filters:{
+					capitalize:function(data){
+						return data[0].toUpperCase()+data.slice(1);
+					},
+					addSufix:function(data,sufix){//调用时不需要给出第一个参数
+						return data+'_'+sufix;
+					}
+				}
+			});
+
+		</script>
+	</body>
+</html>
