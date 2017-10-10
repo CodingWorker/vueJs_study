@@ -47,6 +47,59 @@
 			<div v-bind:class="[class1,class2]">使用数组设置class</div>
 			<div v-bind:style="{width:div_width,height:div_height,border:div_border}">使用对象设置内联样式</div>
 			<div v-bind:style="div_style">使用计算属性设置内联样式</div>
+			<div>
+				<p v-if="showSubTitle">showSubTitle</p>
+				<p v-else>{{showSubTitle}}</p>
+			</div>
+			<template v-if="showSubTitle">
+			  <h1>Title</h1>
+			  <p>Paragraph 1</p>
+			  <p>Paragraph 2</p>
+			</template>
+			<div v-show="div_show">使用v-show控制div的显示和隐藏</div>
+			<div>
+			<h3>v-for遍历数组</h5>
+				<ul>
+				<h4>不带索引</h4>
+					<li v-for="v in forArr">{{v}}</li>
+					<h4>带索引</h4>
+					<li v-for="(v,k) in forArr">{{k}}.{{v}}</li>
+				</ul>
+				<h3>遍历对象</h3>
+				<ul>
+					<h4>不带键值，不带索引</h4>	
+					<li v-for="val in forObj">{{val}}</li>
+					<h4>带键值，不带索引</h4>
+					<li v-for="(val,key) in forObj">{{key}}=>{{val}}</li>
+					<h4>带键值，带索引</h4>
+					<li v-for="(val,key,index) in forObj">{{index}}.{{key}}=>{{val}}</li>
+				</ul>
+				<h2>遍历数值序列</h2>
+				<span v-for="x in 10">{{x}}</span>
+				<div>counter:{{clickCounter}}</div>
+				<button v-on:click="clickCounter++">clickCounter++</button>
+				<button v-on:click="greet">greet</button>
+				<button @click="warn('some mistakes',$event)">warn</button>
+				<form action="">
+				<h2>默认enter提交表单</h2>
+					<input type="text" @keyup.enter="submit">
+				</form>
+				<input type="checkbox" v-model="checked" value="check-a">
+				<input type="checkbox" v-model="checked" value="check-b">
+				<hr />
+				<input type="checkbox" v-model="checkedArr" name="checkedItem">
+				<input type="checkbox" v-model="checkedArr" name="checkedItem">
+				<input type="checkbox" v-model="checkedArr" name="checkedItem">
+				<input type="checkbox" v-model="checkedArr" name="checkedItem">
+				<input type="checkbox" v-model="checkedArr" name="checkedItem">
+				<select v-model="selected">
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+<span>Selected: {{ selected }}</span>
+
+			</div>
 		</div>
 		<script>
 			// console.log(Vue);
@@ -91,7 +144,23 @@
 					class2:'class-2',
 					div_width:200,
 					div_height:100,
-					div_border:'1px solid red'
+					div_border:'1px solid red',
+					showSubTitle:true,
+					div_show:true,
+					forArr:[
+						'a',
+						1,
+						'c'
+					],
+					forObj:{
+						a:'aa',
+						b:'bb',
+						c:'cc'
+					},
+					clickCounter:0,
+					checked:true,
+					checkedArr:[],
+					selected:null
 				},
 				beforeCreate:function(){
 					console.log('before created');
@@ -126,6 +195,14 @@
 					},
 					method_now:function(){
 						return new Date();
+					},
+					greet:function(event){
+						console.log(event.target);
+						console.log('hello');
+					},
+					warn:function(msg,event){
+						console.log(event.target);
+						console.log(msg);
 					}
 				},
 				computed:{
