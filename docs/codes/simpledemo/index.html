@@ -4,6 +4,11 @@
 		<title>vue demo</title>
 		<script src="./js/jquery-3.2.1.min.js"></script>
 		<script src="./js/vue-2.4.4.js"> </script>
+		<style>
+			.active{
+				color:red;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="app">
@@ -32,6 +37,16 @@
 			<a :href="url">v-bind缩写:</a>
 			<button @click="btn_click">v-on缩写@</button>
 			<div>使用计算属性，可以代替某些的data,如message的反转{{reversedMessage}}</div>
+			<div><strong>计算属性vs方法</strong>
+				
+			</div>
+			<div>Name:{{fullName}}</div>
+			<div>使用计算属性更好:fullName:{{computed_fullName}}</div>
+			<div v-bind:class="{active:isActive}">使用v-bind设置class,对象设置class</div>
+			<div v-bind:class="classObject">使用计算属性设置class</div>
+			<div v-bind:class="[class1,class2]">使用数组设置class</div>
+			<div v-bind:style="{width:div_width,height:div_height,border:div_border}">使用对象设置内联样式</div>
+			<div v-bind:style="div_style">使用计算属性设置内联样式</div>
 		</div>
 		<script>
 			// console.log(Vue);
@@ -63,7 +78,20 @@
 						'Jack',
 						'David',
 						'Mary'
-					]
+					],
+					firstName:'Foo',
+					lastName:'Bar',
+					fullName:'Foo Bar',
+					isActive:true,
+					isClassA1:true,
+					isClassA2:true,
+					isClassB1:true,
+					isClassB2:true,
+					class1:'class-1',
+					class2:'class-2',
+					div_width:200,
+					div_height:100,
+					div_border:'1px solid red'
 				},
 				beforeCreate:function(){
 					console.log('before created');
@@ -95,12 +123,51 @@
 					},
 					btn_click:function(){
 						console.log('btn clicked');
+					},
+					method_now:function(){
+						return new Date();
 					}
 				},
 				computed:{
 					reversedMessage: function () {
       					return this.message.split('').reverse().join('')
+    				},
+    				computed_now:function(){
+    					return new Date();
+    				},
+    				computed_fullName:function(){
+    					return this.firstName+' '+this.lastName; 
+    				},
+    				fullName_get_set:{
+    					get:function(){
+    						return this.firstName+' '+this.lastName; 
+    					},
+    					set:function(val){
+    						this.fullName=val;
+    					}
+    				},
+    				classObject:function(){
+    					return {
+    						classA:this.isClassA1&&this.isClassA2,
+    						classB:this.isClassB1||this.isClassB2
+    					};
+    				},
+    				div_style:function(){
+    					return {
+    						width:500,
+    						height:300,
+    						border:'2px solid blue'
+    					};
     				}
+				},
+				watch:{//设置监控
+					firstName:function(val){//firstName改变时触发
+						this.fullName=val+' '+this.lastName;
+					},
+					lastName:function(newVal,oldVal){//lastName改变时触发
+						console.log('old: '+this.firstName+' '+oldVal);
+						console.log('new: '+this.firstName+' '+newVal);
+					}
 				},
 				filters:{
 					capitalize:function(data){
