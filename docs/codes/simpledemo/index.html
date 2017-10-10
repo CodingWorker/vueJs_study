@@ -29,6 +29,9 @@
 			<div>{{num+1}}</div>
 			<div>{{isOK?'Yes':'No'}}</div>
 			<div>过滤器使用，首字母大写{{message | capitalize | addSufix('@')}}</div>
+			<a :href="url">v-bind缩写:</a>
+			<button @click="btn_click">v-on缩写@</button>
+			<div>使用计算属性，可以代替某些的data,如message的反转{{reversedMessage}}</div>
 		</div>
 		<script>
 			// console.log(Vue);
@@ -54,6 +57,7 @@
 					classB:'b',
 					num:1,
 					isOK:true,
+					url:'http://www.baidu.com',
 					persons:[
 						'Daniel',
 						'Jack',
@@ -88,7 +92,15 @@
 				methods:{
 					reverseMessage:function(){
 						this.message=this.message.split('').reverse().join('');
+					},
+					btn_click:function(){
+						console.log('btn clicked');
 					}
+				},
+				computed:{
+					reversedMessage: function () {
+      					return this.message.split('').reverse().join('')
+    				}
 				},
 				filters:{
 					capitalize:function(data){
